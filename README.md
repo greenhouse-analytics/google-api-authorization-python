@@ -8,28 +8,22 @@ To do this successfully, follow the following three steps:
 
 ## 1 Set up a Google project ##
 
-For step one: you'll need to set up a Google Project. 
-Read [Erwin Maas' amazing post about Google OAuth 2](https://www.themarketingtechnologist.co/google-oauth-2-enable-your-application-to-access-data-from-a-google-user/?utm_source=ghg_google_auth_repo&utm_medium=doc). 
-Follow his 17 steps to create a project. After these 17 steps, you can continue to the second part of the setup in this repo. ***The interface referred to in the post has since been updated*** *, but the descriptions still work in the new interface.*
+For step one: you'll need to set up a Google Project here: https://console.developers.google.com. After you've set up a project, create credentials for it. Use this configuration:
+
+- Access type: OAuth Client ID
+- Application type: Other
+
+When you've configured your credentials, you'll see your client id and client secret. You will need these in step 2.
 
 ## 2 Get your access token and refresh token ##
 
-After creating a project, you'll have to get your access token and refresh token. 
+After creating a project, you'll have to generate an access token and refresh token. 
 You can do so by creating `credentials.py` based of `credentials-example.py`. 
-Fill out the credentials from your Google Project. 
-Make sure to fill out [the scopes for the APIs](https://developers.google.com/identity/protocols/googlescopes) you want to use. 
-After that, run `authorize.py`. 
-This will print a URL in the console and asks you to fill out a code. 
-You can get the code from the URL:
-
-- Open the URL.
-- Accept the conditions listed in the access request window (they should match the scopes you've configured)
-- Copy the value of the `?code` URL parameter.
-- Fill out the code in the console.
-
-Et voila: the console just printed your access token and refresh token.
+Fill out the client id and client secret that you've generated in step 1. 
+Make sure to fill out [the scopes for the APIs](https://developers.google.com/identity/protocols/googlescopes) you want to use. After that, run `authorize.py`. This will print a URL in the console and asks you to fill out a code. Click the URL to authorize your Google Account. After that, you'll see a screen with the 'code value'. Copy-paste this in the console of your Python editor. After this, the console will print your access token and refresh token.
 
 *If you have to redo the API connection, make sure to remove your app's access from your account ([use this link](https://security.google.com/settings/security/permissions)). It's required because Google only gives you a refresh token on your first successful access request.*
+
 
 ## 3. Connect to the API ##
 
